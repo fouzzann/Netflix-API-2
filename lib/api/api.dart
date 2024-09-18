@@ -57,39 +57,7 @@ class Api {
   }
 
 
-Future<List<Movies>> getTop10Movies() async {
- try {
-     final response = await http.get(Uri.parse(_upComingUrl));
-    if (response.statusCode == 200) {
-      final decodedData = json.decode(response.body)['results'] as List;
-      print(decodedData);
-      List<Movies> top10 = decodedData.map((movie) => Movies.fromJson(movie)).toList();
-      top10.shuffle(Random.secure());
-      return  top10;
-    } else {
-      throw Exception('Something happened');
-    }
-  }catch(e){
-    throw Exception("getTop10Movies${e}");
-  }   
- }
 
-  Future<List<Movies>> WeThingYouLoveThese() async {
-    try{
-          final response = await http.get(Uri.parse(_topRatedUrl));
-    if (response.statusCode == 200) {
-      final decodedData = json.decode(response.body)['results'] as List;
-      print(decodedData);
-      List<Movies> weThingYouLoveThese = decodedData.map((movie) => Movies.fromJson(movie)).toList();
-      weThingYouLoveThese.shuffle(Random());
-      return weThingYouLoveThese;
-    } else {
-      throw Exception('Something happened');
-    }
-    }catch (e){
-      throw Exception('getTopRatedMovies ${e}');
-    }
-  }
 
    Future<List<Movies>> newOnNetflix() async {
    try{

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart'; 
+import 'package:intl/intl.dart';
 import 'package:netflix/api/api.dart';
 import 'package:netflix/widgets/constants.dart';
 import 'package:netflix/widgets/models/movie.dart';
@@ -26,7 +26,6 @@ class _HomePageState extends State<HomePage> {
     super.initState();
     trendingMovies = Api().getTrendingMovies();
     topRatedMovies = Api().getTopRatedMovies();
-    upcomingMovies = Api().getUpcomingMovies();
   }
 
   void _onItemTapped(int index) {
@@ -255,9 +254,10 @@ class _HomePageState extends State<HomePage> {
         ),
         Expanded(
           child: FutureBuilder<List<Movies>>(
-            future: Future.wait([trendingMovies, topRatedMovies, upcomingMovies])
-                .then((List<List<Movies>> lists) =>
-                    lists.expand((list) => list).toList()),
+            future:
+                Future.wait([trendingMovies, topRatedMovies, upcomingMovies])
+                    .then((List<List<Movies>> lists) =>
+                        lists.expand((list) => list).toList()),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return Center(
@@ -271,7 +271,9 @@ class _HomePageState extends State<HomePage> {
                 List<Movies> movies = snapshot.data!;
                 if (_searchQuery.isNotEmpty) {
                   movies = movies.where((movie) {
-                    return movie.title.toLowerCase().contains(_searchQuery.toLowerCase());
+                    return movie.title
+                        .toLowerCase()
+                        .contains(_searchQuery.toLowerCase());
                   }).toList();
                 }
 
@@ -287,7 +289,8 @@ class _HomePageState extends State<HomePage> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => DetailScreen(movie: movies[index]),
+                            builder: (context) =>
+                                DetailScreen(movie: movies[index]),
                           ),
                         );
                       },
@@ -326,16 +329,16 @@ class DetailScreen extends StatelessWidget {
         slivers: [
           SliverAppBar.large(
             leading: Container(
-              margin: EdgeInsets.all(8.0), 
+              margin: EdgeInsets.all(8.0),
               decoration: BoxDecoration(
-                color: Colors.black, 
-                borderRadius: BorderRadius.circular(10), 
+                color: Colors.black,
+                borderRadius: BorderRadius.circular(10),
               ),
               child: BackButton(
                 color: Colors.white,
               ),
             ),
-            backgroundColor: Colors.black, 
+            backgroundColor: Colors.black,
             expandedHeight: 350,
             pinned: true,
             floating: true,
@@ -413,7 +416,8 @@ class DetailScreen extends StatelessWidget {
                                 ),
                               ),
                               Text(
-                                DateFormat('yyyy-MM-dd').format(movie.releaseDate),  
+                                DateFormat('yyyy-MM-dd')
+                                    .format(movie.releaseDate),
                                 style: TextStyle(
                                   color: Colors.white,
                                 ),
@@ -434,10 +438,9 @@ class DetailScreen extends StatelessWidget {
                               Text(
                                 'Rating  ',
                                 style: TextStyle(
-                                  color: Colors.white, 
-                                  fontSize: 17,
-                                  fontWeight: FontWeight.bold
-                                ),
+                                    color: Colors.white,
+                                    fontSize: 17,
+                                    fontWeight: FontWeight.bold),
                               ),
                               Icon(
                                 Icons.star,
@@ -445,9 +448,7 @@ class DetailScreen extends StatelessWidget {
                               ),
                               Text(
                                 " ${movie.voteAverage.toStringAsFixed(1)}/10",
-                                style: TextStyle(
-                                  color: Colors.white
-                                ),
+                                style: TextStyle(color: Colors.white),
                               ),
                             ],
                           ),

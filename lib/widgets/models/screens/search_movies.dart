@@ -36,7 +36,7 @@ class Search extends StatelessWidget {
         ),
         Expanded(
           child: FutureBuilder<List<Movies>>(
-            future: Future.wait([trendingMovies, topRatedMovies, upcomingMovies])
+            future: Future.wait([trendingMovies, topRatedMovies,upcomingMovies])
                 .then((List<List<Movies>> lists) => lists.expand((list) => list).toList()),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {

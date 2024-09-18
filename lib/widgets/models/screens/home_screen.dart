@@ -29,8 +29,6 @@ class _HomePageState extends State<HomePage> {
     trendingMovies = Api().getTrendingMovies();
     topRatedMovies = Api().getTopRatedMovies();
     upcomingMovies = Api().getUpcomingMovies();
-    top10Movies = Api().getTop10Movies();
-    wethings = Api().WeThingYouLoveThese();
     newonNetflixMovies = Api().newOnNetflix();
     
   }
@@ -394,76 +392,76 @@ class _HomePageState extends State<HomePage> {
               }
             },
           ),
-          SizedBox(height: 30),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(
-              'Top 10 Movies',
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.w500,
-                color: Colors.white,
-              ),
-            ),
-          ),
-          SizedBox(height: 30),
-          FutureBuilder<List<Movies>>(
-            future: top10Movies,
-            builder: (context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                return Center(child: CircularProgressIndicator());
-              } else if (snapshot.hasError) {
-                return Center(
-                  child: Text('Error: ${snapshot.error}', style: TextStyle(color: Colors.white)),
-                );
-              } else {
-                return MovieSlider(snapshot: snapshot);
-              }
-            },
-          ),
+          // SizedBox(height: 30),
+          // Padding(
+          //   padding: const EdgeInsets.all(8.0),
+          //   child: Text(
+          //     'Top 10 Movies',
+          //     style: TextStyle(
+          //       fontSize: 20,
+          //       fontWeight: FontWeight.w500,
+          //       color: Colors.white,
+          //     ),
+          //   ),
+          // ),
+          // SizedBox(height: 30),
+          // FutureBuilder<List<Movies>>(
+          //   future: top10Movies,
+          //   builder: (context, snapshot) {
+          //     if (snapshot.connectionState == ConnectionState.waiting) {
+          //       return Center(child: CircularProgressIndicator());
+          //     } else if (snapshot.hasError) {
+          //       return Center(
+          //         child: Text('Error: ${snapshot.error}', style: TextStyle(color: Colors.white)),
+          //       );
+          //     } else {
+          //       return MovieSlider(snapshot: snapshot);
+          //     }
+          //   },
+          // ),
 
-          SizedBox(height: 30),
-          FutureBuilder<List<Movies>>(
-            future: upcomingMovies,
-            builder: (context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                return Center(child: CircularProgressIndicator());
-              } else if (snapshot.hasError) {
-                return Center(
-                  child: Text('Error: ${snapshot.error}', style: TextStyle(color: Colors.white)),
-                );
-              } else {
-                return MovieSlider(snapshot: snapshot);
-              }
-            },
-          ),
-          SizedBox(height: 30),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(
-              "We Think You'll Love This",
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.w500,
-                color: Colors.white,
-              ),
-            ),
-          ),
-          SizedBox(height: 30),
-          FutureBuilder<List<Movies>>(
-            future: top10Movies,
-            builder: (context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                return Center(child: CircularProgressIndicator());
-              } else if (snapshot.hasError) {
-                return Center(
-                  child: Text('Error: ${snapshot.error}', style: TextStyle(color: Colors.white)),
-                );
-              } else {
-                return MovieSlider(snapshot: snapshot);
-              }
-            },
-          ), 
+          // SizedBox(height: 30),
+          // FutureBuilder<List<Movies>>(
+          //   future: upcomingMovies,
+          //   builder: (context, snapshot) {
+          //     if (snapshot.connectionState == ConnectionState.waiting) {
+          //       return Center(child: CircularProgressIndicator());
+          //     } else if (snapshot.hasError) {
+          //       return Center(
+          //         child: Text('Error: ${snapshot.error}', style: TextStyle(color: Colors.white)),
+          //       );
+          //     } else {
+          //       return MovieSlider(snapshot: snapshot);
+          //     }
+          //   },
+          // ),
+          // SizedBox(height: 30),
+          // Padding(
+          //   padding: const EdgeInsets.all(8.0),
+          //   child: Text(
+          //     "We Think You'll Love This",
+          //     style: TextStyle(
+          //       fontSize: 20,
+          //       fontWeight: FontWeight.w500,
+          //       color: Colors.white,
+          //     ),
+          //   ),
+          // ),
+          // SizedBox(height: 30),
+          // FutureBuilder<List<Movies>>(
+          //   future: top10Movies,
+          //   builder: (context, snapshot) {
+          //     if (snapshot.connectionState == ConnectionState.waiting) {
+          //       return Center(child: CircularProgressIndicator());
+          //     } else if (snapshot.hasError) {
+          //       return Center(
+          //         child: Text('Error: ${snapshot.error}', style: TextStyle(color: Colors.white)),
+          //       );
+          //     } else {
+          //       return MovieSlider(snapshot: snapshot);
+          //     }
+          //   },
+          // ), 
 
            SizedBox(height: 30),
           Padding(
