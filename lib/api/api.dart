@@ -55,10 +55,7 @@ class Api {
     }
     
   }
-
-
-
-
+  
    Future<List<Movies>> newOnNetflix() async {
    try{
       final response = await http.get(Uri.parse(_trendingUrl));

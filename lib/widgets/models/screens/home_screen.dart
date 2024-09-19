@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:netflix/api/api.dart';
 import 'package:netflix/widgets/coming_soon_widget.dart';
 import 'package:netflix/widgets/models/movie.dart';
+import 'package:netflix/widgets/models/screens/profile.dart';
 import 'package:netflix/widgets/models/screens/search_movies.dart';
 import 'package:netflix/widgets/movie_slider.dart';
 import 'package:netflix/widgets/trending.dart';
@@ -141,7 +142,12 @@ class _HomePageState extends State<HomePage> {
           ),
           ),
           actions: [
-        
+        IconButton(onPressed: (){
+          Navigator.of(context).push(MaterialPageRoute(builder: (ctx)=> Profile()));
+        }, icon: Icon(Icons.person_outlined,
+        color: Colors.white,
+        size: 25 ,
+        )),
              SizedBox(
               width: 20,
              ),
