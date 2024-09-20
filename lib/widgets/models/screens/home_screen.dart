@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:netflix/api/api.dart';
 import 'package:netflix/widgets/coming_soon_widget.dart';
-import 'package:netflix/widgets/models/movie.dart';
+import 'package:netflix/widgets/models/model.dart';
 import 'package:netflix/widgets/models/screens/profile.dart';
 import 'package:netflix/widgets/models/screens/search_movies.dart';
 import 'package:netflix/widgets/movie_slider.dart';

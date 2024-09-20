@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:netflix/api/api.dart';
 import 'package:netflix/widgets/constants.dart';
-import 'package:netflix/widgets/models/movie.dart';
+import 'package:netflix/widgets/models/model.dart';
 import 'package:netflix/widgets/movie_slider.dart';
 import 'package:netflix/widgets/trending.dart';
 

@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:math';
 import 'package:netflix/widgets/constants.dart';
-import 'package:netflix/widgets/models/movie.dart';
+import 'package:netflix/widgets/models/model.dart';
 import 'package:http/http.dart' as http;
 
 class Api {

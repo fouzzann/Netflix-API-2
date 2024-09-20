@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:netflix/widgets/constants.dart';
-import 'package:netflix/widgets/models/movie.dart';
+import 'package:netflix/widgets/models/model.dart';
 import 'package:netflix/widgets/models/screens/details_screen.dart';
 
 class Search extends StatelessWidget {
