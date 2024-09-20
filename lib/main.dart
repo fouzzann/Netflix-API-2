@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:netflix/widgets/models/screens/home_screen.dart';
+import 'package:netflix/widgets/models/screens/splash.dart';
 
 void main() {
   runApp(const MyApp());
@@ -7,11 +8,12 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
+  
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
     debugShowCheckedModeBanner: false,
-      home:HomePage() 
+      home:HomePage()
     );
   } 
 }

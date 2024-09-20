@@ -18,9 +18,9 @@ class _HomePageState extends State<HomePage> {
   late Future<List<Movies>> trendingMovies;
   late Future<List<Movies>> topRatedMovies;
   late Future<List<Movies>> upcomingMovies;
-  late Future<List<Movies>> top10Movies;
-  late Future<List<Movies>> wethings;
   late Future<List<Movies>> newonNetflixMovies;
+  late Future<List<Movies>> todaystopPicks;
+  
   int _selectedIndex = 0;
   String _searchQuery = '';
 
@@ -31,6 +31,7 @@ class _HomePageState extends State<HomePage> {
     topRatedMovies = Api().getTopRatedMovies();
     upcomingMovies = Api().getUpcomingMovies();
     newonNetflixMovies = Api().newOnNetflix();
+    todaystopPicks = Api().todaysTopPickUpforYou();
     
   }
 
@@ -329,7 +330,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
           ),
-          SizedBox(height: 30),
+          SizedBox(height: 15),
           FutureBuilder<List<Movies>>(
             future: trendingMovies,
             builder: (context, snapshot) {
@@ -344,7 +345,7 @@ class _HomePageState extends State<HomePage> {
               }
             },
           ),
-          SizedBox(height: 30),
+          SizedBox(height: 15),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(
@@ -356,7 +357,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
           ),
-          SizedBox(height: 30),
+          SizedBox(height: 15),
           FutureBuilder<List<Movies>>(
             future: topRatedMovies,
             builder: (context, snapshot) {
@@ -371,7 +372,7 @@ class _HomePageState extends State<HomePage> {
               }
             },
           ),
-          SizedBox(height: 30),
+          SizedBox(height: 15),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(
@@ -383,7 +384,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
           ),
-          SizedBox(height: 30),
+          SizedBox(height: 15),
           FutureBuilder<List<Movies>>(
             future: upcomingMovies,
             builder: (context, snapshot) {
@@ -398,78 +399,7 @@ class _HomePageState extends State<HomePage> {
               }
             },
           ),
-          // SizedBox(height: 30),
-          // Padding(
-          //   padding: const EdgeInsets.all(8.0),
-          //   child: Text(
-          //     'Top 10 Movies',
-          //     style: TextStyle(
-          //       fontSize: 20,
-          //       fontWeight: FontWeight.w500,
-          //       color: Colors.white,
-          //     ),
-          //   ),
-          // ),
-          // SizedBox(height: 30),
-          // FutureBuilder<List<Movies>>(
-          //   future: top10Movies,
-          //   builder: (context, snapshot) {
-          //     if (snapshot.connectionState == ConnectionState.waiting) {
-          //       return Center(child: CircularProgressIndicator());
-          //     } else if (snapshot.hasError) {
-          //       return Center(
-          //         child: Text('Error: ${snapshot.error}', style: TextStyle(color: Colors.white)),
-          //       );
-          //     } else {
-          //       return MovieSlider(snapshot: snapshot);
-          //     }
-          //   },
-          // ),
-
-          // SizedBox(height: 30),
-          // FutureBuilder<List<Movies>>(
-          //   future: upcomingMovies,
-          //   builder: (context, snapshot) {
-          //     if (snapshot.connectionState == ConnectionState.waiting) {
-          //       return Center(child: CircularProgressIndicator());
-          //     } else if (snapshot.hasError) {
-          //       return Center(
-          //         child: Text('Error: ${snapshot.error}', style: TextStyle(color: Colors.white)),
-          //       );
-          //     } else {
-          //       return MovieSlider(snapshot: snapshot);
-          //     }
-          //   },
-          // ),
-          // SizedBox(height: 30),
-          // Padding(
-          //   padding: const EdgeInsets.all(8.0),
-          //   child: Text(
-          //     "We Think You'll Love This",
-          //     style: TextStyle(
-          //       fontSize: 20,
-          //       fontWeight: FontWeight.w500,
-          //       color: Colors.white,
-          //     ),
-          //   ),
-          // ),
-          // SizedBox(height: 30),
-          // FutureBuilder<List<Movies>>(
-          //   future: top10Movies,
-          //   builder: (context, snapshot) {
-          //     if (snapshot.connectionState == ConnectionState.waiting) {
-          //       return Center(child: CircularProgressIndicator());
-          //     } else if (snapshot.hasError) {
-          //       return Center(
-          //         child: Text('Error: ${snapshot.error}', style: TextStyle(color: Colors.white)),
-          //       );
-          //     } else {
-          //       return MovieSlider(snapshot: snapshot);
-          //     }
-          //   },
-          // ), 
-
-           SizedBox(height: 30),
+           SizedBox(height: 15),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(
@@ -481,7 +411,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
           ),
-          SizedBox(height: 30),
+          SizedBox(height: 15),
           FutureBuilder<List<Movies>>(
             future: trendingMovies,
             builder: (context, snapshot) {
@@ -496,6 +426,35 @@ class _HomePageState extends State<HomePage> {
               }
             },
           ), 
+
+           SizedBox(height: 15),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              "Today's Top Picks For You",
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.w500,
+                color: Colors.white,
+              ),
+            ),
+          ),
+          SizedBox(height: 15),
+          FutureBuilder<List<Movies>>(
+            future: newonNetflixMovies,
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return Center(child: CircularProgressIndicator());
+              } else if (snapshot.hasError) {
+                return Center(
+                  child: Text('Error: ${snapshot.error}', style: TextStyle(color: Colors.white)),
+                );
+              } else {
+                return MovieSlider(snapshot: snapshot);
+              }
+            },
+          ), 
+          
           
            ],
 

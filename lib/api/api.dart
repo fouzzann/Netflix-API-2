@@ -55,7 +55,7 @@ class Api {
     }
     
   }
-  
+
    Future<List<Movies>> newOnNetflix() async {
    try{
       final response = await http.get(Uri.parse(_trendingUrl));
@@ -69,9 +69,29 @@ class Api {
       throw Exception('Something happened');
     }
    }catch (e){
-    throw Exception("getTrendingMovies${e}");
+    throw Exception("newOnNetflix${e}");
    }
   }
+
+   Future<List<Movies>> todaysTopPickUpforYou() async {
+    try{
+      final response = await http.get(Uri.parse(_upComingUrl));
+    if (response.statusCode == 200) {
+      final decodedData = json.decode(response.body)['results'] as List;
+      print(decodedData);
+      List<Movies> todaystopPickUpforYou =decodedData.map((movie) => Movies.fromJson(movie)).toList();
+      todaystopPickUpforYou.shuffle(Random());
+      return todaystopPickUpforYou;
+    } else {
+      throw Exception('Something happened');
+    }
+    }catch(e){
+      throw Exception("todaysTopPickUpforYou:${e}");
+    }
+    
+  }
+
+
 
  
 }
