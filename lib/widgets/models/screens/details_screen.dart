@@ -347,9 +347,9 @@ class DetailScreen extends StatelessWidget {
                 padding: const EdgeInsets.only(right: 23),
                 child: Text(
                   movie.title,
-                  style: TextStyle(
+                  style: TextStyle(color: Colors.white,
                     fontSize: 17,
-                    fontWeight: FontWeight.w600,
+                    fontWeight: FontWeight.w800,
                   ),
                 ),
               ),
