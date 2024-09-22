@@ -39,13 +39,10 @@ class _HomePageState extends State<HomePage> {
     setState(() {
       _selectedIndex = index;
     });
+    
   }
 
-  void _filterMovies(String query) {
-    setState(() {
-      _searchQuery = query;
-    });
-  }
+ 
 
   @override
   Widget build(BuildContext context) {
@@ -59,9 +56,14 @@ class _HomePageState extends State<HomePage> {
           SizedBox(
             width: 15,
           ),
-          Icon(Icons.search,
+          // Icon(Icons.search,
+          // color: Colors.white,
+          // size: 25,),
+          IconButton(onPressed: (){
+            Navigator.of(context).push(MaterialPageRoute(builder: (ctx)=> Search(trendingMovies: trendingMovies, topRatedMovies: topRatedMovies, upcomingMovies: upcomingMovies, searchQuery: _searchQuery)));
+          }, icon: Icon(Icons.search,
           color: Colors.white,
-          size: 25,),
+          )),
 
           SizedBox(
             width: 15,
@@ -70,23 +72,27 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: Colors.
         black,
         title: _selectedIndex == 1
-            ? Row(
-                children: [
-                  Icon(Icons.search, color: Colors.grey),
-                  SizedBox(width: 8),
-                  Expanded(
-                    child: TextField(
-                      decoration: InputDecoration(
-                        hintText: 'Search',
-                        hintStyle: TextStyle(color: Colors.grey),
-                        border: InputBorder.none,
-                      ),
-                      style: TextStyle(color: Colors.white),
-                      onChanged: _filterMovies,
-                    ),
-                  ),
-                ],
-              )
+            ? Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                  children: [
+                    // Icon(Icons.search, color: Colors.grey),
+                    // SizedBox(width: 8),
+                    // Expanded(
+                    //   child: TextField(
+                    //     decoration: InputDecoration(
+                    //       hintText: 'Search',
+                    //       hintStyle: TextStyle(color: Colors.grey),
+                    //       border: InputBorder.none,
+                    //     ),
+                    //     style: TextStyle(color: Colors.white),
+                    //     onChanged: _filterMovies,
+
+                    //   ),
+                    // ),
+                  ],
+                ),
+            )
             : Image.asset(
                 'assets/N.png',
                 height: 35,
@@ -97,8 +103,8 @@ class _HomePageState extends State<HomePage> {
         index: _selectedIndex,
         children: [
           _buildHomeContent(),
-          Search(trendingMovies: trendingMovies, topRatedMovies: topRatedMovies, upcomingMovies: upcomingMovies, searchQuery:_searchQuery ),
-          _buildNewAndHot()
+         _buildNewAndHot(),
+          Profile()
         ],
       ),
      bottomNavigationBar: BottomNavigationBar(
@@ -108,14 +114,14 @@ class _HomePageState extends State<HomePage> {
       label: 'Home',
     ),
     BottomNavigationBarItem(
-      icon: Icon(Icons.search),
-      label: 'Search',
+      icon: Icon(Icons.video_library),
+      label: 'New & Hot',
     ),
     BottomNavigationBarItem(
       icon: Icon(
-        Icons.video_library,
+        Icons.person,
         ),
-        label: 'New & Hot' 
+        label: 'My Netflix' 
       ),
   
    ],
@@ -142,21 +148,7 @@ class _HomePageState extends State<HomePage> {
             color: Colors.white
           ),
           ),
-          actions: [
-        IconButton(onPressed: (){
-          Navigator.of(context).push(MaterialPageRoute(builder: (ctx)=> Profile()));
-        }, icon: Icon(Icons.person_outlined,
-        color: Colors.white,
-        size: 25 ,
-        )),
-             SizedBox(
-              width: 20,
-             ),
-             
-            SizedBox(
-              width: 20, 
-            ) 
-          ],
+        
           bottom: TabBar( 
             dividerColor: Colors.black,
             isScrollable: false,

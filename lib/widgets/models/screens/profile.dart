@@ -6,26 +6,7 @@ class Profile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: Icon(Icons.arrow_back),
-          color: Colors.white,
-        ),
-        backgroundColor: Colors.black,
-        title: Text(
-          'My Netflix',
-          style: TextStyle(color: Colors.white),
-        ),
-        actions: [
-          Icon(Icons.search, color: Colors.white),
-          SizedBox(width: 10),
-          Icon(Icons.list, color: Colors.white),
-          SizedBox(width: 15),
-        ],
-      ),
+      
       backgroundColor: Colors.black,
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -37,7 +18,7 @@ class Profile extends StatelessWidget {
               height: 120,
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage('assets/N.png'),
+                  image: AssetImage('assets/Netflix.jpeg'),
                 ),
               ),
             ),
